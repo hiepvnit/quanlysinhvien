@@ -37,6 +37,7 @@
                     Sửa
                 </button>
             </form>
+            <br />
             <a href="{{ route('huyen_index') }}">Quay lại</a>
         </div>
     </div>

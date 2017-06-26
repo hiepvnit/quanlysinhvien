@@ -24,6 +24,7 @@
                     </button>
                 </div>
             </form>
+            <br />
             <a href="{{ route('khoahoc_index') }}">Quay lại</a>
         </div>
     </div>
