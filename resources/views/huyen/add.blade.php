@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             <form class="form-horizontal" role="form" method="POST" action="{{ route('huyen_add') }}">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{ csrf_field() }}
                 <div class="form-group">
                     <div class="col-md-9">
                         <div class="{{ $errors->has('ten_huyen') ? ' has-error' : '' }}">

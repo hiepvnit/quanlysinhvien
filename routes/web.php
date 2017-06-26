@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 
 Route::get('huyen', 'HuyenController@index')->name('huyen_index');
 Route::get('huyen/add', 'HuyenController@showAddForm')->name('huyen_add');

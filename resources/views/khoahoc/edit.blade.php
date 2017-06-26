@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             <form class="form-horizontal" role="form" method="POST" action="{{ route('khoahoc_update') }}">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{ $khoahocData['KhoaHocID'] }}">
                 <div class="form-group">
                     <div class="col-md-9">
