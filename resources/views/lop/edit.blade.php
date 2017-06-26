@@ -25,7 +25,6 @@
                     </button>
                 </div>
             </form>
-            <br />
             <a href="{{ route('lop_index') }}">Quay lại</a>
         </div>
     </div>

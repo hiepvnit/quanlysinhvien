@@ -22,7 +22,6 @@
                     </button>
                 </div>
             </form>
-            <br />
             <a href="{{ route('tinh_index') }}">Quay lại</a>
         </div>
     </div>
