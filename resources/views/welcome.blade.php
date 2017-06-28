@@ -69,10 +69,19 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/') }}">Màn hình chính</a>
+<!--                        <a href="{{ url('/') }}">Màn hình chính</a>-->
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            Đăng xuất
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     @else
                         <a href="{{ url('/login') }}">Đăng nhập</a>
-                    <a href="{{ url('/register') }}">Đăng ký</a>
+                        <a href="{{ url('/register') }}">Đăng ký</a>
                     @endif
                 </div>
             @endif

@@ -44,7 +44,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-                            <li><a href="{{ route('register') }}">Đăng ký</a></li>
+<!--                            <li><a href="{{ route('register') }}">Đăng ký</a></li>-->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
