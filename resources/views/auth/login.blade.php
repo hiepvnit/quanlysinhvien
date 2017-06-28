@@ -54,9 +54,9 @@
                                     Đăng nhập
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <!--<a class="btn btn-link" href="{{ route('password.request') }}">
                                     Lấy lại mật khẩu?
-                                </a>
+                                </a>-->
                             </div>
                         </div>
                     </form>
