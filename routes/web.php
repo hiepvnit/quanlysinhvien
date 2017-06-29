@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Route::get('huyen', 'HuyenController@index')->name('huyen_index');
 Route::get('huyen/add', 'HuyenController@showAddForm')->name('huyen_add');
