@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             <form class="form-horizontal" role="form" method="POST" action="{{ route('tinh_update') }}">
-                {{ csrf_field() }}
+<!--                {{ csrf_field() }}-->
                 <input type="hidden" name="id" value="{{ $tinhData['TinhID'] }}">
                 <div class="form-group{{ $errors->has('ten_tinh') ? ' has-error' : '' }}">
                     <div class="col-md-9">

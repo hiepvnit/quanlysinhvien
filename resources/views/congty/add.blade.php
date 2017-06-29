@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             <form class="form-horizontal" role="form" method="POST" action="{{ route('congty_add') }}">
-                {{ csrf_field() }}
+<!--                {{ csrf_field() }}-->
                 <div class="form-group">
                     <div class="col-md-9">
                         <div class="{{ $errors->has('ten_congty') ? ' has-error' : '' }}">

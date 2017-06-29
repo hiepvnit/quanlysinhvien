@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             <form class="form-horizontal" role="form" method="POST" action="{{ route('tinh_add') }}">
-                {{ csrf_field() }}
+<!--                {{ csrf_field() }}-->
                 <div class="form-group{{ $errors->has('ten_tinh') ? ' has-error' : '' }}">
                     <div class="col-md-9">
                         <input id="ten_tinh" type="text" class="form-control" name="ten_tinh" value="" autofocus placeholder="Thêm tỉnh mới ...">
