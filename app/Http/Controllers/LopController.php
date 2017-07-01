@@ -16,10 +16,9 @@ class LopController extends Controller
      * index
      */
     public function index(Request $request) {
-        $lop_key = $request->input('lop_key');
-        $lops = Lop::where('TenLop', 'like', "%$lop_key%")->paginate(50);
+        $lops = Lop::all();
 
-        return view('lop.index', ['lops' => $lops, 'lop_key' => $lop_key]);
+        return view('lop.index', ['lops' => $lops]);
     }
     /*
      * show form add

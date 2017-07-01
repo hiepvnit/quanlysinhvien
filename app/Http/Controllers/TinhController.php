@@ -17,10 +17,9 @@ class TinhController extends Controller
      * show list tinh
      */
     public function index(Request $request) {
-        $tinh_key = $request->input('tinh_key');
-        $tinhs = Tinh::where('TenTinh', 'like', "%$tinh_key%")->paginate(50);
+        $tinhs = Tinh::all();
 
-        return view('tinh.index', ['tinhs' => $tinhs, 'tinh_key' => $tinh_key]);
+        return view('tinh.index', ['tinhs' => $tinhs]);
     }
     /*
      * show tinh add form

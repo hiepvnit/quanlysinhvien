@@ -18,12 +18,11 @@ class HuyenController extends Controller
      * home function. show list huyen
      */
     public function index(Request $request) {
-        $huyen_key = $request->input('search_huyen');
-        $huyens = Huyen::where('TenHuyen', 'like', "%$huyen_key%")->paginate(50);
+        $huyens = Huyen::all();
 
         $tinhDatas = Tinh::all()->pluck('TenTinh', 'TinhID');
 
-        return view('huyen.index', ['huyens' => $huyens, 'search_huyen' => $huyen_key, 'tinhDatas' => $tinhDatas]);
+        return view('huyen.index', ['huyens' => $huyens, 'tinhDatas' => $tinhDatas]);
     }
 
     /*

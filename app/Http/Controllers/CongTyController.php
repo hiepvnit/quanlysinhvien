@@ -16,10 +16,9 @@ class CongTyController extends Controller
      * index
      */
     public function index(Request $request) {
-        $congty_key = $request->input('congty_key');
-        $congtys = CongTy::where('TenCongTy', 'like', "%$congty_key%")->paginate(50);
+        $congtys = CongTy::all();
 
-        return view('congty.index', ['congtys' => $congtys, 'congty_key' => $congty_key]);
+        return view('congty.index', ['congtys' => $congtys]);
     }
     /*
      * show form add

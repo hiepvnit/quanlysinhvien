@@ -16,10 +16,9 @@ class KhoaHocController extends Controller
      * index
      */
     public function index(Request $request) {
-        $khoahoc_key = $request->input('khoahoc_key');
-        $khoahocs = KhoaHoc::where('TenKhoaHoc', 'like', "%$khoahoc_key%")->paginate(50);
+        $khoahocs = KhoaHoc::all();
 
-        return view('khoahoc.index', ['khoahocs' => $khoahocs, 'khoahoc_key' => $khoahoc_key]);
+        return view('khoahoc.index', ['khoahocs' => $khoahocs]);
     }
     /*
      * show form add

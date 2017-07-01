@@ -17,9 +17,8 @@ class HocVienController extends Controller
     public function index(Request $request) {
         $hocvien_key = $request->input('hocvien_key');
         $hocviens = HocVien::with('congty', 'khoahoc', 'lop')
-            ->where('Ten', 'like', "%$hocvien_key%")
             ->where('Active', '=', '1')
-            ->paginate(50);
+            ->paginate(100);
         $gioiTinh = array(
             '1' => 'Nam',
             '0' => 'Nữ'
@@ -28,6 +27,6 @@ class HocVienController extends Controller
             '1' => 'Bắc Ninh',
             '0' => 'Hà Nội'
         );
-        return view('hocvien.index', compact(array('hocviens', 'hocvien_key', 'gioiTinh', 'chiNhanh')));
+        return view('hocvien.index', compact(array('hocviens', 'gioiTinh', 'chiNhanh')));
     }
 }
