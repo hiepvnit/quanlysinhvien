@@ -61,7 +61,7 @@
                             <td>{{ $hocvien->HoLot }}</td>
                             <td>{{ $hocvien->Ten }}</td>
                             <td>{{ $hocvien->HoVaTen }}</td>
-                            <td>{{ $hocvien->NgaySinh }}</td>
+                            <td>{{ Carbon\Carbon::parse($hocvien->NgaySinh)->format('d/m/Y') }}</td>
                             <td>{{ isset($hocvien->congty->TenCongTy) ? $hocvien->congty->TenCongTy : '' }}</td>
                             <td>{{ isset($hocvien->khoahoc->TenKhoaHoc) ? $hocvien->khoahoc->TenKhoaHoc : '' }}</td>
                             <td>{{ isset($hocvien->lop->TenLop) ? $hocvien->lop->TenLop : '' }}</td>
@@ -73,14 +73,14 @@
                             <td>{{ $hocvien->SDTNhaRieng }}</td>
                             <td>{{ $hocvien->SDTDiDong }}</td>
                             <td>{{ $hocvien->CMND }}</td>
-                            <td>{{ $hocvien->NgayCapCMND }}</td>
+                            <td>{{ Carbon\Carbon::parse($hocvien->NgayCapCMND)->format('d/m/Y') }}</td>
                             <td>@if(isset($hocvien->tinh->TinhID) && $hocvien->tinh->TinhID == $hocvien->NoiCapCMND) {{ $hocvien->tinh->TenTinh }} @endif</td>
-                            <td>{{ $hocvien->NgayNhapHoc}}</td>
-                            <td>{{ $hocvien->NgayKetThuc}}</td>
+                            <td>{{ Carbon\Carbon::parse($hocvien->NgayNhapHoc)->format('d/m/Y')}}</td>
+                            <td>{{ Carbon\Carbon::parse($hocvien->NgayKetThuc)->format('d/m/Y')}}</td>
                             <td>{{ $hocvien->GhiChu}}</td>
-                            <td>{{ $hocvien->NgayXuatCanh}}</td>
-                            <td>{{ $hocvien->BoChuongTrinh}}</td>
-                            <td>{{ $hocvien->XuatCanh}}</td>
+                            <td>{{ Carbon\Carbon::parse($hocvien->NgayXuatCanh)->format('d/m/Y')}}</td>
+                            <td>{{ $huyChuongTrinh[$hocvien->BoChuongTrinh]}}</td>
+                            <td>{{ $xuatCanh[$hocvien->XuatCanh]}}</td>
                             <td>{{ $hocvien->DongTienLan1}}</td>
                             <td>{{ $hocvien->DongTienLan2}}</td>
                             <td>{{ $hocvien->DongTienLan3}}</td>

@@ -15,7 +15,6 @@ class HocVienController extends Controller
      * home function. show list hocvien
      */
     public function index(Request $request) {
-        $hocvien_key = $request->input('hocvien_key');
         $hocviens = HocVien::with('congty', 'khoahoc', 'lop')
             ->where('Active', '=', '1')
             ->paginate(100);
@@ -27,6 +26,14 @@ class HocVienController extends Controller
             '1' => 'Bắc Ninh',
             '0' => 'Hà Nội'
         );
-        return view('hocvien.index', compact(array('hocviens', 'gioiTinh', 'chiNhanh')));
+        $huyChuongTrinh = array(
+            '1' => 'Có',
+            '0' => 'Không'
+        );
+        $xuatCanh = array(
+            '1' => 'Có',
+            '0' => 'Không'
+        );
+        return view('hocvien.index', compact(array('hocviens', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh')));
     }
 }
