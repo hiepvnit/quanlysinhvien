@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="content" id="content">
-    <style>
-        div.dataTables_wrapper div.dataTables_paginate {display: none;}
-        .pagination {float: right; margin: 0;}
-    </style>
 <!--    <ol class="breadcrumb pull-right">-->
 <!--        <li><a href="{{ route('hocvien_add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm học viên mới</a></li>-->
 <!--    </ol>-->
@@ -22,7 +18,7 @@
                     @endif
 
                     @isset($hocviens)
-                    <table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
+                    <table id="data-table" class="table table-striped table-bordered nowrap" width="100%" data-page-length='100'>
                         <thead>
                             <tr>
                                 <th>Mã HV</th>
@@ -88,7 +84,6 @@
                         </tr>
                         @endforeach
                     </table>
-                    {{ $hocviens->links() }}
                     @endisset
                 </div>
             </div>

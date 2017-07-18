@@ -14,7 +14,13 @@ var handleDataTableButtons = function() {
             buttons: [
                 { text: 'Xuất Excel', extend: 'excel', className: 'btn-sm' },
             ],
-            responsive: true
+            scrollY:        true,
+            scrollX:        true,
+            scrollCollapse: true,
+            paging:         true,
+            fixedColumns:   {
+                leftColumns: 3
+            }
         });
     }
 };
