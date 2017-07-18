@@ -18,7 +18,7 @@
                     @endif
 
                     @isset($hocviens)
-                    <table id="data-table" class="table table-striped table-bordered nowrap" width="100%" data-page-length='100'>
+                    <table id="data-table" class="table table-striped table-bordered nowrap" width="100%" data-page-length='50'>
                         <thead>
                             <tr>
                                 <th>Mã HV</th>
