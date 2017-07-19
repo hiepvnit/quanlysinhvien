@@ -12,12 +12,22 @@ var handleDataTableButtons = function() {
         $('#data-table').DataTable({
             dom: 'lBfrtip',
             buttons: [
-                { text: 'Xuất Excel', extend: 'excel', className: 'btn-sm' },
+                {
+                    text: 'Xuất Excel',
+                    extend: 'excel',
+                    className: 'btn-sm',
+                    exportOptions: {
+                        modifier: {
+                            selected: true
+                        }
+                    }
+                }
             ],
             scrollY:        true,
             scrollX:        true,
             scrollCollapse: true,
             paging:         true,
+            select: true,
             fixedColumns:   {
                 leftColumns: 3
             }
