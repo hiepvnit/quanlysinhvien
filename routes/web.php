@@ -52,7 +52,7 @@ Route::post('khoahoc/update', 'KhoaHocController@update')->name('khoahoc_update'
 
 Route::get('hocvien', 'HocVienController@index')->name('hocvien_index');
 Route::get('hocvien/add', 'HocVienController@showAddForm')->name('hocvien_add');
+Route::get('hocvien/delete/{id}', 'HocVienController@delete');
 //Route::post('khoahoc/add', 'khoahocController@add')->name('khoahoc_add');
-//Route::get('khoahoc/delete/{id}', 'khoahocController@delete');
 //Route::get('khoahoc/edit/{id}', 'khoahocController@edit');
 //Route::post('khoahoc/update', 'khoahocController@update')->name('khoahoc_update');

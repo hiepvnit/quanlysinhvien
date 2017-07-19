@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $tinh->TinhID }}</td>
                             <td>{{ $tinh->TenTinh }}</td>
-                            <td><a href="{{ url('/tinh/edit', ['id' => $tinh->TinhID]) }}">Sửa</a> | <a href="{{ url('/tinh/delete', ['id' => $tinh->TinhID]) }}">Xóa</a></td>
+                            <td><a href="{{ url('/tinh/edit', ['id' => $tinh->TinhID]) }}">Sửa</a> | <a href="{{ url('/tinh/delete', ['id' => $tinh->TinhID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a></td>
                         </tr>
                         @endforeach
                     </table>

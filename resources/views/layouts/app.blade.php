@@ -50,8 +50,12 @@
     <script src="{{ asset('js/jszip.min.js') }}"></script>
     <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.fixedColumns.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
+
+    <?php if(Route::getCurrentRoute()->uri() == 'hocvien') : ?>
+        <script src="{{ asset('js/dataTables.fixedColumns.min.js') }}"></script>
+    <?php endif; ?>
+
     <script>
         $(document).ready(function() {
             App.init();

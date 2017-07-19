@@ -32,7 +32,7 @@
                             <td>{{ $khoahoc->KhoaHocID }}</td>
                             <td>{{ $khoahoc->TenKhoaHoc }}</td>
                             <td>{{ $khoahoc->GhiChu }}</td>
-                            <td><a href="{{ url('/khoahoc/edit', ['id' => $khoahoc->KhoaHocID]) }}">Sửa</a> | <a href="{{ url('/khoahoc/delete', ['id' => $khoahoc->KhoaHocID]) }}">Xóa</a></td>
+                            <td><a href="{{ url('/khoahoc/edit', ['id' => $khoahoc->KhoaHocID]) }}">Sửa</a> | <a href="{{ url('/khoahoc/delete', ['id' => $khoahoc->KhoaHocID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a></td>
                         </tr>
                         @endforeach
                     </table>

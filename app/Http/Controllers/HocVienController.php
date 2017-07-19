@@ -36,4 +36,13 @@ class HocVienController extends Controller
         );
         return view('hocvien.index', compact(array('hocviens', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh')));
     }
+
+    /*
+     * delete hocvien
+     */
+    public function delete($id) {
+        $hocVienData = Hocvien::find($id);
+        $hocVienData->delete();
+        return redirect()->route('hocvien_index')->with('status', 'Xóa học viên thành công');
+    }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="content" id="content">
 <!--    <ol class="breadcrumb pull-right">-->
 <!--        <li><a href="{{ route('hocvien_add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm học viên mới</a></li>-->
@@ -21,6 +22,7 @@
                     <table id="data-table" class="table table-striped table-bordered nowrap" width="100%" data-page-length='50'>
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Mã HV</th>
                                 <th>Họ Lót</th>
                                 <th>Tên</th>
@@ -53,6 +55,7 @@
                         </thead>
                         @foreach ($hocviens as $hocvien)
                         <tr>
+                            <td><a href="#">Sửa</a> | <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a></td>
                             <td>{{ $hocvien->HocVienID }}</td>
                             <td>{{ $hocvien->HoLot }}</td>
                             <td>{{ $hocvien->Ten }}</td>

@@ -33,7 +33,7 @@
                                 <td>{{ $huyen->HuyenID }}</td>
                                 <td>{{ $huyen->TenHuyen }}</td>
                                 <td>{{ isset($tinhDatas[$huyen->TinhID]) ? $tinhDatas[$huyen->TinhID] : '' }}</td>
-                                <td><a href="{{ url('/huyen/edit', ['id' => $huyen->HuyenID]) }}">Sửa</a> | <a href="{{ url('/huyen/delete', ['id' => $huyen->HuyenID]) }}">Xóa</a></td>
+                                <td><a href="{{ url('/huyen/edit', ['id' => $huyen->HuyenID]) }}">Sửa</a> | <a href="{{ url('/huyen/delete', ['id' => $huyen->HuyenID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -20,7 +20,7 @@
                     <div class="form-group{{ $errors->has('ten_tinh') ? ' has-error' : '' }}">
                         @if(isset($tinhDatas))
                         <select name="ten_tinh" class="form-control">
-                            <option value="">-- Chọn tỉnh --</option>
+                            <option value="">-- Ch?n t?nh --</option>
                             @foreach($tinhDatas as $tinhData)
                                 <option value="{{ $tinhData['TinhID'] }}" @if($huyenData['TinhID'] == $tinhData['TinhID']) selected="selected" @endif>{{ $tinhData['TenTinh'] }}</option>
                             @endforeach
@@ -34,10 +34,10 @@
                     </div>
                 </div>
                 &nbsp;<button type="submit" class="btn btn-primary">
-                    Sửa
+                    S?a
                 </button>
             </form>
-            <a href="{{ route('huyen_index') }}">Quay lại</a>
+            <a href="{{ route('huyen_index') }}">Quay l?i</a>
         </div>
     </div>
 </div>
