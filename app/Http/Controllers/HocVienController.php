@@ -38,6 +38,13 @@ class HocVienController extends Controller
     }
 
     /*
+     * show form add
+     */
+    public function showAddForm() {
+        return view('hocvien.add');
+    }
+
+    /*
      * delete hocvien
      */
     public function delete($id) {

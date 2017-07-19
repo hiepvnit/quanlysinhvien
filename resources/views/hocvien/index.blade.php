@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="content" id="content">
-<!--    <ol class="breadcrumb pull-right">-->
-<!--        <li><a href="{{ route('hocvien_add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm học viên mới</a></li>-->
-<!--    </ol>-->
+    <ol class="breadcrumb pull-right">
+        <li><a href="{{ route('hocvien_add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm học viên mới</a></li>
+    </ol>
     <h1 class="page-header">Quản lý Học Viên <small>thêm, xóa, sửa học viên</small></h1>
     <div class="row">
         <div class="col-md-12">
