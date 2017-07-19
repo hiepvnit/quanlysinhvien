@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HocVien;
+use App\KhoaHoc;
+use App\Lop;
+use App\CongTy;
+use App\Huyen;
+use App\Tinh;
 
 class HocVienController extends Controller
 {
@@ -41,7 +46,13 @@ class HocVienController extends Controller
      * show form add
      */
     public function showAddForm() {
-        return view('hocvien.add');
+        $khoahocs = KhoaHoc::all();
+        $lops = Lop::all();
+        $congtys = CongTy::all();
+        $huyens = Huyen::all();
+        $tinhs = Tinh::all();
+
+        return view('hocvien.add', compact('khoahocs', 'lops', 'congtys', 'huyens', 'tinhs'));
     }
 
     /*
