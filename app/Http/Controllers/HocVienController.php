@@ -23,7 +23,7 @@ class HocVienController extends Controller
     public function index(Request $request) {
         $hocviens = HocVien::with('congty', 'khoahoc', 'lop')
             ->where('Active', '=', '1')
-            ->paginate(10);
+            ->get();
         $gioiTinh = array(
             '1' => 'Nam',
             '0' => 'Nữ'
