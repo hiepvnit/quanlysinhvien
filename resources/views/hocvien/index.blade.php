@@ -55,7 +55,7 @@
                         </thead>
                         @foreach ($hocviens as $hocvien)
                         <tr>
-                            <td><a href="#">Sửa</a> | <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a></td>
+                            <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">Xem</a></td>
                             <td>{{ $hocvien->HocVienID }}</td>
                             <td>{{ $hocvien->HoLot }}</td>
                             <td>{{ $hocvien->Ten }}</td>

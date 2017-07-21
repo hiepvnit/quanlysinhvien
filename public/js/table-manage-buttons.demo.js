@@ -29,7 +29,7 @@ var handleDataTableButtons = function() {
             paging:         true,
             select: true,
             fixedColumns:   {
-                leftColumns: 4
+                leftColumns: 3
             }
         });
     }

@@ -9,6 +9,7 @@ use App\Lop;
 use App\CongTy;
 use App\Huyen;
 use App\Tinh;
+use Excel;
 
 class HocVienController extends Controller
 {
@@ -22,7 +23,7 @@ class HocVienController extends Controller
     public function index(Request $request) {
         $hocviens = HocVien::with('congty', 'khoahoc', 'lop')
             ->where('Active', '=', '1')
-            ->get();
+            ->paginate(10);
         $gioiTinh = array(
             '1' => 'Nam',
             '0' => 'Nữ'
@@ -62,5 +63,32 @@ class HocVienController extends Controller
         $hocVienData = Hocvien::find($id);
         $hocVienData->delete();
         return redirect()->route('hocvien_index')->with('status', 'Xóa học viên thành công');
+    }
+
+    /*
+     * view hocvien
+     * @params $id
+     */
+    public function detail($id) {
+        $hocvien = HocVien::with('congty', 'khoahoc', 'lop')->find($id);
+
+        $gioiTinh = array(
+            '1' => 'Nam',
+            '0' => 'Nữ'
+        );
+        $chiNhanh = array(
+            '1' => 'Bắc Ninh',
+            '0' => 'Hà Nội'
+        );
+        $huyChuongTrinh = array(
+            '1' => 'Có',
+            '0' => 'Không'
+        );
+        $xuatCanh = array(
+            '1' => 'Có',
+            '0' => 'Không'
+        );
+
+        return view('hocvien.detail', compact('hocvien', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh'));
     }
 }
