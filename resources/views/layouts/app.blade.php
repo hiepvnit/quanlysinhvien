@@ -51,6 +51,7 @@
     <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
+    @yield('stylesheet')
 
     <?php if(Route::getCurrentRoute()->uri() == 'hocvien' || Route::getCurrentRoute()->uri() == '/') : ?>
         <script src="{{ asset('js/dataTables.fixedColumns.min.js') }}"></script>

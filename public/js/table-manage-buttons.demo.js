@@ -9,7 +9,11 @@ var handleDataTableButtons = function() {
 	"use strict";
     
     if ($('#data-table').length !== 0) {
-        $('#data-table').DataTable({
+        $('#data-table tfoot th').each( function (i) {
+            var title = $('#data-table thead th').eq( $(this).index() ).text();
+            $(this).html( '<input type="text" placeholder="Tìm '+title+'" data-index="'+i+'" />' );
+        } );
+        var table = $('#data-table').DataTable({
             dom: 'lBfrtip',
             buttons: [
                 {
@@ -29,9 +33,17 @@ var handleDataTableButtons = function() {
             paging:         true,
             select: true,
             fixedColumns:   {
-                leftColumns: 3
+                leftColumns: 4
             }
         });
+
+        // Filter event handler
+        $( table.table().container() ).on( 'keyup', 'tfoot input', function () {
+            table
+                .column( $(this).data('index') )
+                .search( this.value )
+                .draw();
+        } );
     }
 };
 
