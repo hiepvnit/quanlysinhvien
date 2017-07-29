@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="panel panel-inverse">
                 <div class="panel-body">
-
+                    @include('errors.error')
                     <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}">
                         <!--                {{ csrf_field() }}-->
                         <div class="form-group col-md-6">

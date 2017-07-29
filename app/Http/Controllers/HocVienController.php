@@ -9,7 +9,9 @@ use App\Lop;
 use App\CongTy;
 use App\Huyen;
 use App\Tinh;
-use Excel;
+use App\Http\Requests\HocVienRequest;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class HocVienController extends Controller
 {
@@ -90,5 +92,20 @@ class HocVienController extends Controller
         );
 
         return view('hocvien.detail', compact('hocvien', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh'));
+    }
+
+    /*
+     * add hocvien
+     * @param $input data
+     * @retun true or false
+     */
+    public function add(HocVienRequest $request) {
+//        $hocVien = new HocVien();
+//        $hocVien->HoLot = $request->ho_lot;
+//        $hocVien->Ten = $request->ten;
+//        $hocVien->Active = 1;
+//        $hocVien->save();
+
+        return redirect()->route('hocvien_index');
     }
 }
