@@ -11,30 +11,31 @@
                     <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}">
                         <!--                {{ csrf_field() }}-->
                         <div class="form-group col-md-6">
-                            <label for="ho_lot">Họ lót</label>
+                            <label for="ho_lot">Họ lót <span class="text-danger">(*)</span></label>
                             <input type="text" class="form-control" name="ho_lot" id="ho_lot" placeholder="Họ lót">
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="ten">Tên</label>
+                            <label for="ten">Tên <span class="text-danger">(*)</span></label>
                             <input type="text" class="form-control" name="ten" id="" placeholder="Tên">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="ngay_sinh">Ngày sinh</label>
-                            <input type="text" class="form-control" name="ngay_sinh" id="" placeholder="Ngày sinh">
+                            <input type="text" class="form-control datepicker" name="ngay_sinh" id="" placeholder="Ngày sinh">
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="gioi_tinh">Giới tính</label>
+                            <label for="gioi_tinh">Giới tính <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="gioi_tinh" id="gioi_tinh">
+                                <option value="">[Chọn giới tính]</option>
                                 <option value="1">Nam</option>
                                 <option value="0">Nữ</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="khoa_hoc">Khóa học</label>
+                            <label for="khoa_hoc">Khóa học <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="khoa_hoc" id="khoa_hoc">
                                 <option value="">[Chọn khóa học]</option>
                                 @foreach ($khoahocs as $khoahoc)
@@ -44,7 +45,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="lop">Lớp</label>
+                            <label for="lop">Lớp <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="lop" id="lop">
                                 <option value="">[Chọn lớp]</option>
                                 @foreach ($lops as $lop)
@@ -54,7 +55,7 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="congty">Công ty tiếp nhận</label>
+                            <label for="congty">Công ty tiếp nhận <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="congty" id="congty">
                                 <option value="">[Chọn công ty tiếp nhận]</option>
                                 @foreach ($congtys as $congty)
@@ -69,7 +70,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="huyen">Huyện</label>
+                            <label for="huyen">Huyện <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="huyen" id="huyen">
                                 <option value="">[Chọn huyện]</option>
                                 @foreach ($huyens as $huyen)
@@ -79,7 +80,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="tinh">Tỉnh</label>
+                            <label for="tinh">Tỉnh <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="tinh" id="tinh">
                                 <option value="">[Chọn tỉnh]</option>
                                 @foreach ($tinhs as $tinh)
@@ -105,12 +106,12 @@
 
                         <div class="form-group col-md-6">
                             <label for="ngay_xuat_canh">Ngày xuất cảnh</label>
-                            <input type="text" class="form-control" name="ngay_xuat_canh" id="ngay_xuat_canh" placeholder="Ngày xuất cảnh">
+                            <input type="text" class="form-control datepicker" name="ngay_xuat_canh" id="ngay_xuat_canh" placeholder="Ngày xuất cảnh">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="ngay_cap_cmnd">Ngày cấp CMND</label>
-                            <input type="text" class="form-control" name="ngay_cap_cmnd" id="ngay_cap_cmnd" placeholder="Ngày cấp CMND">
+                            <input type="text" class="form-control datepicker" name="ngay_cap_cmnd" id="" placeholder="Ngày cấp CMND">
                         </div>
 
                         <div class="form-group col-md-6">
@@ -125,12 +126,12 @@
 
                         <div class="form-group col-md-6">
                             <label for="ngap_nhap_hoc">Ngày nhập học</label>
-                            <input type="text" class="form-control" name="ngap_nhap_hoc" id="ngap_nhap_hoc" placeholder="Ngày nhập học">
+                            <input type="text" class="form-control datepicker" name="ngap_nhap_hoc" id="" placeholder="Ngày nhập học">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="ngay_ket_thuc">Ngày kết thúc học</label>
-                            <input type="text" class="form-control" name="ngay_ket_thuc" id="ngay_ket_thuc" placeholder="Ngày kết thúc học">
+                            <input type="text" class="form-control datepicker" name="ngay_ket_thuc" id="ngay_ket_thuc" placeholder="Ngày kết thúc học">
                         </div>
 
                         <div class="form-group col-md-6">
@@ -172,7 +173,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="chi_nhanh">Chi nhánh</label>
+                            <label for="chi_nhanh">Chi nhánh <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="chi_nhanh" id="chi_nhanh">
                                 <option value="">[Chọn chi nhánh]</option>
                                 <option value="1">Bắc Ninh</option>
@@ -187,6 +188,10 @@
                                     Còn quản lý
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <p>Trường có dấu <span class="text-danger">*</span> là bắt buộc phải nhập</p>
                         </div>
 
                         <div class="form-group">

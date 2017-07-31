@@ -20,6 +20,39 @@ class HocVienController extends Controller
         $this->middleware('auth');
     }
     /*
+     * @param: field1 in db
+     * @param: field2 on view
+     * @return array[field1=>field2]
+     */
+    protected $inputArrays = [
+        'HoLot' => 'ho_lot',
+        'Ten' => 'ten',
+        'NgaySinh' => 'ngay_sinh',
+        'GioiTinh' => 'gioi_tinh',
+        'CongTyID' => 'congty',
+        'KhoaHocID' => 'khoa_hoc',
+        'LopID' => 'lop',
+        'HuyenID' => 'huyen',
+        'TinhID' => 'tinh',
+        'ThonXa' => 'thon_xa',
+        'SDTNhaRieng' => 'sdt_nharieng',
+        'SDTDiDong' => 'sdt_didong',
+        'CMND' => 'cmnd',
+        'NgayCapCMND' => 'ngay_cap_cmnd',
+        'NoiCapCMND' => 'noi_cap_cmnd',
+        'NgayNhapHoc' => 'ngap_nhap_hoc',
+        'NgayKetThuc' => 'ngay_ket_thuc',
+        'BoChuongTrinh' => 'bo_chuong_trinh',
+        'XuatCanh' => 'xuat_canh',
+//        'Anh' => 'anh',
+        'GhiChu' => 'ghichu',
+        'ChiNhanh' => 'chi_nhanh',
+        'NgayXuatCanh' => 'ngay_xuat_canh',
+        'DongTienLan1' => 'dong_tien_lan_1',
+        'DongTienLan2' => 'dong_tien_lan_2',
+        'DongTienLan3' => 'dong_tien_lan_3'
+    ];
+    /*
      * home function. show list hocvien
      */
     public function index(Request $request) {
@@ -100,11 +133,18 @@ class HocVienController extends Controller
      * @retun true or false
      */
     public function add(HocVienRequest $request) {
-//        $hocVien = new HocVien();
-//        $hocVien->HoLot = $request->ho_lot;
-//        $hocVien->Ten = $request->ten;
-//        $hocVien->Active = 1;
-//        $hocVien->save();
+        $hocVien = new HocVien();
+        foreach ($this->inputArrays as $key => $value) {
+            $hocVien->Active = 1;
+            if (!$request->bo_chuong_trinh) {
+                $request->bo_chuong_trinh = 0;
+            }
+            if (!$request->xuat_canh) {
+                $request->xuat_canh = 0;
+            }
+            $hocVien->$key = $request->$value;
+        }
+        $hocVien->save();
 
         return redirect()->route('hocvien_index');
     }

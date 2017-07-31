@@ -26,6 +26,13 @@ class HocVienRequest extends FormRequest
         return [
             'ho_lot' => 'required|max:255',
             'ten' => 'required|max:255',
+            'congty' => 'required',
+            'khoa_hoc' => 'required',
+            'lop' => 'required',
+            'huyen' => 'required',
+            'tinh' => 'required',
+            'gioi_tinh' => 'required',
+            'chi_nhanh' => 'required'
         ];
     }
 
@@ -40,7 +47,14 @@ class HocVienRequest extends FormRequest
             'ho_lot.required' => 'Chưa nhập họ lót',
             'ho_lot.max'  => 'Họ lót quá dài',
             'ten.required' => 'Chưa nhập tên',
-            'ten.max' => 'Tên quá dài'
+            'ten.max' => 'Tên quá dài',
+            'congty.required' => 'Chưa chọn công ty tiếp nhận',
+            'khoa_hoc.required' => 'Chưa chọn khóa học',
+            'lop.required' => 'Chưa chọn lớp',
+            'huyen.required' => 'Chưa chọn huyện',
+            'tinh.required' => 'Chưa chọn tỉnh',
+            'gioi_tinh.required' => 'Chưa chọn giới tính',
+            'chi_nhanh.required' => 'Chưa chọn chi nhánh'
         ];
     }
 }

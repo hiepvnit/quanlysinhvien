@@ -20,6 +20,7 @@
     <link href="{{ asset('css/responsive.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/buttons.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fixedColumns.dataTables.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body class="pace-top">
 
@@ -62,6 +63,7 @@
             App.init();
             TableManageButtons.init();
             $(".dropdown-toggle").dropdown();
+            $( ".datepicker" ).datepicker({dateFormat:"yy-mm-dd"});
         });
     </script>
 </body>

@@ -18,12 +18,13 @@ class HocVien extends Model
      * @var array
      */
     protected $fillable = [
-        'ho_lot',
-        'ten',
-//        'faq_cate_id',
-//        'public_flg',
-//        'sortnum',
-//        'delete_flg'
+        'HoLot',
+        'Ten',
+        'CongtyID',
+        'KhoaHocID',
+        'Lop',
+        'HuyenID',
+        'TinhID'
     ];
 
     public function congty()

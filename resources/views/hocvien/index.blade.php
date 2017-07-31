@@ -88,7 +88,7 @@
                             <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->HocVienID }}</a></td>
                             <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->HoLot }}</a></td>
                             <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->Ten }}</a></td>
-                            <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->HoVaTen }}</a></td>
+                            <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->HoLot . ' ' . $hocvien->Ten }}</a></td>
                             <td>{{ Carbon\Carbon::parse($hocvien->NgaySinh)->format('d/m/Y') }}</td>
                             <td>{{ isset($hocvien->congty->TenCongTy) ? $hocvien->congty->TenCongTy : '' }}</td>
                             <td>{{ isset($hocvien->khoahoc->TenKhoaHoc) ? $hocvien->khoahoc->TenKhoaHoc : '' }}</td>
@@ -112,7 +112,7 @@
                             <td>{{ $hocvien->DongTienLan1}}</td>
                             <td>{{ $hocvien->DongTienLan2}}</td>
                             <td>{{ $hocvien->DongTienLan3}}</td>
-                            <td>{{ $hocvien->TongTienDong}}</td>
+                            <td>{{ $hocvien->DongTienLan1 + $hocvien->DongTienLan2 + $hocvien->DongTienLan3 }}</td>
                         </tr>
                         @endforeach
                     </table>
