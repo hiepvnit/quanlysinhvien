@@ -10,8 +10,6 @@ use App\CongTy;
 use App\Huyen;
 use App\Tinh;
 use App\Http\Requests\HocVienRequest;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
 class HocVienController extends Controller
 {
@@ -44,13 +42,13 @@ class HocVienController extends Controller
         'NgayKetThuc' => 'ngay_ket_thuc',
         'BoChuongTrinh' => 'bo_chuong_trinh',
         'XuatCanh' => 'xuat_canh',
-//        'Anh' => 'anh',
-        'GhiChu' => 'ghichu',
+        'GhiChu' => 'ghi_chu',
         'ChiNhanh' => 'chi_nhanh',
         'NgayXuatCanh' => 'ngay_xuat_canh',
         'DongTienLan1' => 'dong_tien_lan_1',
         'DongTienLan2' => 'dong_tien_lan_2',
-        'DongTienLan3' => 'dong_tien_lan_3'
+        'DongTienLan3' => 'dong_tien_lan_3',
+        'Active' => 'con_quan_ly'
     ];
     /*
      * home function. show list hocvien
@@ -134,18 +132,72 @@ class HocVienController extends Controller
      */
     public function add(HocVienRequest $request) {
         $hocVien = new HocVien();
+//        if ($request->hasFile('anh')) {
+//            if($request->file('anh')->isValid()) {
+//                try {
+//                    $file = $request->file('anh');
+//                    $name = time() . '.' . $file->getClientOriginalExtension();
+//                    $request->file('anh')->move(storage_path('app'), $name);
+//                    $hocVien->Anh = $name;
+//                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+//
+//                }
+//            }
+//        }
         foreach ($this->inputArrays as $key => $value) {
-            $hocVien->Active = 1;
             if (!$request->bo_chuong_trinh) {
                 $request->bo_chuong_trinh = 0;
             }
             if (!$request->xuat_canh) {
                 $request->xuat_canh = 0;
             }
+            if (!$request->con_quan_ly) {
+                $request->con_quan_ly = 0;
+            }
             $hocVien->$key = $request->$value;
         }
         $hocVien->save();
 
-        return redirect()->route('hocvien_index');
+        return redirect()->route('hocvien_index')->with('status', 'Tạo mới học viên thành công');
+    }
+
+    /*
+     * edit hocvien
+     * @param: $HocVienID
+     * @return: hocVien index
+     */
+    public function edit($id) {
+        $hocVien = HocVien::find($id);
+        $khoahocs = KhoaHoc::all();
+        $lops = Lop::all();
+        $congtys = CongTy::all();
+        $huyens = Huyen::all();
+        $tinhs = Tinh::all();
+
+        return view('hocvien.edit')->with(compact(array('hocVien', 'khoahocs', 'lops', 'congtys', 'huyens', 'tinhs')));
+    }
+
+    /*
+     * update function
+     * @param: array input
+     * return: redirect hocvien index
+     */
+    public function update(HocVienRequest $request) {
+        $hocVien = HocVien::find($request->id);
+        foreach ($this->inputArrays as $key => $value) {
+            if (!$request->bo_chuong_trinh) {
+                $request->bo_chuong_trinh = 0;
+            }
+            if (!$request->xuat_canh) {
+                $request->xuat_canh = 0;
+            }
+            if (!$request->con_quan_ly) {
+                $request->con_quan_ly = 0;
+            }
+            $hocVien->$key = $request->$value;
+        }
+        $hocVien->save();
+
+        return redirect()->route('hocvien_index')->with('status', 'Sửa học viên thành công');
     }
 }

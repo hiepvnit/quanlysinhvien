@@ -118,9 +118,9 @@
                             <div class="checkbox">
                                 <label>
                                     @if($hocvien->BoChuongTrinh == 1)
-                                        <input type="checkbox" value="{{$hocvien->BoChuongTrinh}}" id="con_quan_ly" name="con_quan_ly" checked="checked" disabled>
+                                        <input type="checkbox" value="{{$hocvien->BoChuongTrinh}}" id="bo_chuong_trinh" name="bo_chuong_trinh" checked="checked" disabled>
                                     @else
-                                        <input type="checkbox" value="{{$hocvien->BoChuongTrinh}}" id="con_quan_ly" name="con_quan_ly" disabled>
+                                        <input type="checkbox" value="{{$hocvien->BoChuongTrinh}}" id="bo_chuong_trinh" name="bo_chuong_trinh" disabled>
                                     @endif
                                     Bỏ chương trình
                                 </label>
@@ -131,9 +131,9 @@
                             <div class="checkbox">
                                 <label>
                                     @if($hocvien->XuatCanh == 1)
-                                        <input type="checkbox" value="{{$hocvien->XuatCanh}}" id="con_quan_ly" name="con_quan_ly" checked="checked" disabled>
+                                        <input type="checkbox" value="{{$hocvien->XuatCanh}}" id="xuat_canh" name="xuat_canh" checked="checked" disabled>
                                     @else
-                                        <input type="checkbox" value="{{$hocvien->XuatCanh}}" id="con_quan_ly" name="con_quan_ly" disabled>
+                                        <input type="checkbox" value="{{$hocvien->XuatCanh}}" id="xuat_canh" name="xuat_canh" disabled>
                                     @endif
                                     Xuất cảnh
                                 </label>
@@ -170,7 +170,11 @@
                         <div class="form-group col-md-12">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="1" id="con_quan_ly" name="con_quan_ly" checked="checked" disabled>
+                                    @if($hocvien->Active == 1)
+                                    <input type="checkbox" value="{{$hocvien->Active}}" id="active" name="active" checked="checked" disabled>
+                                    @else
+                                    <input type="checkbox" value="{{$hocvien->Active}}" id="active" name="active" disabled>
+                                    @endif
                                     Còn quản lý
                                 </label>
                             </div>
@@ -179,9 +183,9 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <a href="{{ route('hocvien_index') }}" class="btn btn-primary">Quay lại</a>
-                                <a href="#" class="btn btn-primary">Sửa</a>
+                                <a href="{{ url('/hocvien/edit', ['id' => $hocvien->HocVienID]) }}" class="btn btn-primary">Sửa</a>
                                 <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" class="btn btn-primary">Xóa</a>
-                                <a href="#" class="btn btn-primary">Xuất excel</a>
+<!--                                <a href="#" class="btn btn-primary">Xuất excel</a>-->
                             </div>
                         </div>
                     </form>
