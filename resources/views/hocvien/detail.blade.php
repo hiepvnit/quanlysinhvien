@@ -12,7 +12,9 @@
                         <!--                {{ csrf_field() }}-->
                         <div class="form-group col-md-12">
                             <label for="ho_lot">Ảnh đại diện</label>
-                            <img src="{{ asset('storage/'.$hocvien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
+                            @if($hocvien->Avatar)
+                                <img src="{{ asset('storage/'.$hocvien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
+                            @endif
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót</label>
