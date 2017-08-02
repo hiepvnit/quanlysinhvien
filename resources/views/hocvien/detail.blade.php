@@ -35,6 +35,11 @@
                         </div>
 
                         <div class="form-group col-md-6">
+                            <label for="ngay_sinh">Họ và tên</label>
+                            <input type="text" class="form-control" name="ngay_sinh" id="" value="{{$hocvien->HoLot.' '.$hocvien->Ten}}" disabled>
+                        </div>
+
+                        <div class="form-group col-md-6">
                             <label for="gioi_tinh">Giới tính</label>
                             <select class="form-control" name="gioi_tinh" id="gioi_tinh" disabled>
                                 <option value="{{$hocvien->GioiTinh}}">{{$gioiTinh[$hocvien->GioiTinh]}}</option>
@@ -62,7 +67,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="thon_xa">Thôn xã</label>
                             <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" disabled value="{{ $hocvien->ThonXa }}">
                         </div>
@@ -170,13 +175,11 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="chi_nhanh">Chi nhánh</label>
-                            <select class="form-control" name="chi_nhanh" id="chi_nhanh" disabled>
-                                <option value="">{{ $chiNhanh[$hocvien->ChiNhanh] }}</option>
-                            </select>
+                            <label for="dong_tien_lan_3">Tổng tiền đóng</label>
+                            <input type="text" class="form-control" name="" id="" disabled value="{{$hocvien->DongTienLan3 + $hocvien->DongTienLan2 + $hocvien->DongTienLan1}}">
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <div class="checkbox">
                                 <label>
                                     @if($hocvien->Active == 1)
@@ -187,6 +190,13 @@
                                     Còn quản lý
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="chi_nhanh">Chi nhánh</label>
+                            <select class="form-control" name="chi_nhanh" id="chi_nhanh" disabled>
+                                <option value="">{{ $chiNhanh[$hocvien->ChiNhanh] }}</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
