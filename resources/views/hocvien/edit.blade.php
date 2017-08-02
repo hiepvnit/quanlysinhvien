@@ -8,8 +8,13 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
                     @include('errors.error')
-                    <form class="" role="form" method="POST" action="{{ route('hocvien_update') }}">
+                    <form class="" role="form" method="POST" action="{{ route('hocvien_update') }}" enctype="multipart/form-data">
                         <!--                {{ csrf_field() }}-->
+                        <div class="form-group col-md-12">
+                            <label for="anh">Ảnh đại diện</label>
+                            <img src="{{ asset('storage/'.$hocVien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
+                            <input type="file" name="anh" value="{{old('anh')}}" />
+                        </div>
                         <input type="hidden" name="id" value="{{$hocVien->HocVienID}}" />
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót <span class="text-danger">(*)</span></label>

@@ -24,7 +24,7 @@ class HocVienRequest extends FormRequest
     public function rules()
     {
         return [
-//            'anh' => 'image|mimes:jpeg,jpg,png|size:2000',
+            'anh' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'ho_lot' => 'required|max:255',
             'ten' => 'required|max:255',
             'congty' => 'required',
@@ -45,9 +45,9 @@ class HocVienRequest extends FormRequest
     public function messages()
     {
         return [
-//            'anh.image' => 'File được chọn không phải là ảnh',
-//            'anh.mimes' => 'Chỉ upload được định dạng jpeg, jpg, png',
-//            'anh.size' => 'File phải nhỏ hơn 2Mb',
+            'anh.image' => 'File được chọn không phải là ảnh',
+            'anh.mimes' => 'Chỉ upload được định dạng jpg,png,jpeg,gif,svg',
+            'anh.size' => 'File phải nhỏ hơn 2Mb',
             'ho_lot.required' => 'Chưa nhập họ lót',
             'ho_lot.max'  => 'Họ lót quá dài',
             'ten.required' => 'Chưa nhập tên',

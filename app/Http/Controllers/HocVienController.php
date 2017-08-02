@@ -132,18 +132,7 @@ class HocVienController extends Controller
      */
     public function add(HocVienRequest $request) {
         $hocVien = new HocVien();
-//        if ($request->hasFile('anh')) {
-//            if($request->file('anh')->isValid()) {
-//                try {
-//                    $file = $request->file('anh');
-//                    $name = time() . '.' . $file->getClientOriginalExtension();
-//                    $request->file('anh')->move(storage_path('app'), $name);
-//                    $hocVien->Anh = $name;
-//                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
-//
-//                }
-//            }
-//        }
+
         foreach ($this->inputArrays as $key => $value) {
             if (!$request->bo_chuong_trinh) {
                 $request->bo_chuong_trinh = 0;
@@ -156,6 +145,19 @@ class HocVienController extends Controller
             }
             $hocVien->$key = $request->$value;
         }
+        if ($request->hasFile('anh')) {
+            if($request->file('anh')->isValid()) {
+                try {
+                    $file = $request->file('anh');
+                    $fileName = time() . '.' . $file->getClientOriginalExtension();
+                    $path = $file->storeAs('avatars', $fileName);
+                    $hocVien->Avatar = $path;
+                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+
+                }
+            }
+        }
+
         $hocVien->save();
 
         return redirect()->route('hocvien_index')->with('status', 'Tạo mới học viên thành công');
@@ -196,6 +198,19 @@ class HocVienController extends Controller
             }
             $hocVien->$key = $request->$value;
         }
+        if ($request->hasFile('anh')) {
+            if($request->file('anh')->isValid()) {
+                try {
+                    $file = $request->file('anh');
+                    $fileName = time() . '.' . $file->getClientOriginalExtension();
+                    $path = $file->storeAs('avatars', $fileName);
+                    $hocVien->Avatar = $path;
+                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+
+                }
+            }
+        }
+
         $hocVien->save();
 
         return redirect()->route('hocvien_index')->with('status', 'Sửa học viên thành công');

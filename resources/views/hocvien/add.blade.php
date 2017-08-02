@@ -8,12 +8,12 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
                     @include('errors.error')
-                    <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}">
-                        <!--                {{ csrf_field() }}-->
-<!--                        <div class="form-group col-md-12">-->
-<!--                            <label for="anh">Ảnh đại diện</label>-->
-<!--                            <input type="file" name="anh" value="{{old('anh')}}"/>-->
-<!--                        </div>-->
+                    <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}" enctype="multipart/form-data">
+<!--                                        {{ csrf_field() }}-->
+                        <div class="form-group col-md-12">
+                            <label for="anh">Ảnh đại diện</label>
+                            <input type="file" name="anh" value="{{old('anh')}}" />
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót <span class="text-danger">(*)</span></label>
