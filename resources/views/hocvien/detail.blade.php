@@ -199,13 +199,11 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <a href="{{ route('hocvien_index') }}" class="btn btn-primary">Quay lại</a>
-                                <a href="{{ url('/hocvien/edit', ['id' => $hocvien->HocVienID]) }}" class="btn btn-primary">Sửa</a>
-                                <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" class="btn btn-primary">Xóa</a>
+                        <div class="form-group col-md-12">
+                            <a href="{{ route('hocvien_index') }}" class="btn btn-primary">Quay lại</a>
+                            <a href="{{ url('/hocvien/edit', ['id' => $hocvien->HocVienID]) }}" class="btn btn-primary">Sửa</a>
+                            <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" class="btn btn-primary">Xóa</a>
 <!--                                <a href="#" class="btn btn-primary">Xuất excel</a>-->
-                            </div>
                         </div>
                     </form>
                 </div>
