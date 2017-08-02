@@ -12,7 +12,9 @@
                         <!--                {{ csrf_field() }}-->
                         <div class="form-group col-md-12">
                             <label for="anh">Ảnh đại diện</label>
-                            <img src="{{ asset('storage/'.$hocVien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
+                            @if($hocVien->Avatar)
+                                <img src="{{ asset('storage/'.$hocVien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
+                            @endif
                             <input type="file" name="anh" value="{{old('anh')}}" />
                         </div>
                         <input type="hidden" name="id" value="{{$hocVien->HocVienID}}" />
