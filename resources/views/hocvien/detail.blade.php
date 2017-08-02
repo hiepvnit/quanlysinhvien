@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content" id="content">
-    <h1 class="page-header">Chi tiết: {{ $hocvien->Ten }}</h1>
+    <h1 class="page-header">Chi tiết: {{ $hocvien->HoLot }} {{ $hocvien->Ten }}</h1>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-inverse">
