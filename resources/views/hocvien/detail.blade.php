@@ -14,6 +14,8 @@
                             <label for="ho_lot">Ảnh đại diện</label>
                             @if($hocvien->Avatar)
                                 <img src="{{ asset('storage/'.$hocvien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
+                            @else
+                                <p>Không có ảnh</p>
                             @endif
                         </div>
                         <div class="form-group col-md-6">
