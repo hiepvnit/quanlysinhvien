@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}">
+@endsection
+
 @section('content')
 <div class="content" id="content">
     <h1 class="page-header">Thêm học viên</h1>
@@ -10,19 +14,17 @@
                     @include('errors.error')
                     <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}" enctype="multipart/form-data">
 <!--                                        {{ csrf_field() }}-->
-                        <div class="form-group col-md-12">
-                            <label for="anh">Ảnh đại diện</label>
-                            <input type="file" name="anh" value="{{old('anh')}}" />
-                        </div>
 
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót <span class="text-danger">(*)</span></label>
                             <input type="text" class="form-control" name="ho_lot" id="ho_lot" placeholder="Họ lót" value="{{ old('ho_lot') }}">
+                            <label for="ten">Tên <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" name="ten" id="" placeholder="Tên" value="{{ old('ten') }}">
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="ten">Tên <span class="text-danger">(*)</span></label>
-                            <input type="text" class="form-control" name="ten" id="" placeholder="Tên" value="{{ old('ten') }}">
+                            <label for="anh">Ảnh đại diện</label>
+                            <input type="file" name="anh" value="{{old('anh')}}" class="form-control" />
                         </div>
 
                         <div class="form-group col-md-6">
@@ -67,7 +69,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="congty">Công ty tiếp nhận <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="congty" id="congty">
                                 <option value="">[Chọn công ty tiếp nhận]</option>

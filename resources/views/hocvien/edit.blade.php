@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}">
+@endsection
+
 @section('content')
 <div class="content" id="content">
     <h1 class="page-header">Sửa học viên</h1>
@@ -10,22 +14,21 @@
                     @include('errors.error')
                     <form class="" role="form" method="POST" action="{{ route('hocvien_update') }}" enctype="multipart/form-data">
                         <!--                {{ csrf_field() }}-->
-                        <div class="form-group col-md-12">
-                            <label for="anh">Ảnh đại diện</label>
-                            @if($hocVien->Avatar)
-                                <img src="{{ asset('storage/'.$hocVien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
-                            @endif
-                            <input type="file" name="anh" value="{{old('anh')}}" />
-                        </div>
                         <input type="hidden" name="id" value="{{$hocVien->HocVienID}}" />
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót <span class="text-danger">(*)</span></label>
                             <input type="text" class="form-control" name="ho_lot" id="ho_lot" placeholder="Họ lót" value="{{$hocVien->HoLot}}">
+                            <label for="ten">Tên <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" name="ten" id="" placeholder="Tên" value="{{$hocVien->Ten}}">
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="ten">Tên <span class="text-danger">(*)</span></label>
-                            <input type="text" class="form-control" name="ten" id="" placeholder="Tên" value="{{$hocVien->Ten}}">
+                            @if($hocVien->Avatar)
+                                <label for="anh">Ảnh đại diện</label>
+                                <img src="{{ asset('storage/'.$hocVien->Avatar) }}" alt="" class="img-responsive" width="100" height="100" style="padding: 6px 12px;">
+                            @endif
+                            <label for="anh">Chọn ảnh đại diện</label>
+                            <input type="file" name="anh" value="{{old('anh')}}" class="form-control" />
                         </div>
 
                         <div class="form-group col-md-6">
@@ -62,7 +65,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="congty">Công ty tiếp nhận <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="congty" id="congty">
                                 <option value="">[Chọn công ty tiếp nhận]</option>
@@ -72,7 +75,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="thon_xa">Thôn xã</label>
                             <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" value="{{$hocVien->ThonXa}}">
                         </div>

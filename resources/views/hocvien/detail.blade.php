@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}">
+@endsection
+
 @section('content')
 <div class="content" id="content">
     <h1 class="page-header">Chi tiết: {{ $hocvien->HoLot }} {{ $hocvien->Ten }}</h1>
@@ -10,22 +14,19 @@
 
                     <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}">
                         <!--                {{ csrf_field() }}-->
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
+                            <label for="ho_lot">Họ lót</label>
+                            <input type="text" class="form-control" name="ho_lot" id="ho_lot" value="{{$hocvien->HoLot}}" placeholder="Họ lót" disabled>
+                            <label for="ten">Tên</label>
+                            <input type="text" class="form-control" name="ten" id="ten" value="{{$hocvien->Ten}}" placeholder="Tên" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="ho_lot">Ảnh đại diện</label>
                             @if($hocvien->Avatar)
                                 <img src="{{ asset('storage/'.$hocvien->Avatar) }}" alt="" class="img-responsive" width="100" height="100">
                             @else
-                                <p>Không có ảnh</p>
+                                <span class="form-control" disabled>Không có ảnh</span>
                             @endif
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="ho_lot">Họ lót</label>
-                            <input type="text" class="form-control" name="ho_lot" id="ho_lot" value="{{$hocvien->HoLot}}" placeholder="Họ lót" disabled>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="ten">Tên</label>
-                            <input type="text" class="form-control" name="ten" id="ten" value="{{$hocvien->Ten}}" placeholder="Tên" disabled>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -54,7 +55,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="congty">Công ty tiếp nhận</label>
                             <select class="form-control" name="congty" id="congty" disabled>
                                 <option value="">{{ isset($hocvien->congty->TenCongTy) ? $hocvien->congty->TenCongTy : '' }}</option>
