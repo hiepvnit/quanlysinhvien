@@ -1,0 +1,12 @@
+@media print {
+    .col-md-6 {
+        width: 50%;
+        float: left;
+    }
+    #header, #sidebar {display: none;}
+    #content {width: 100%; margin: 0; padding: 0;}
+    h1.page-header {padding-left: 30px; margin-bottom: 10px; margin-top: -20px;}
+    .button_control {display: none;}
+    .btn-scroll-to-top {display: none !important;}
+    .form-control, output {color: #000;}
+}

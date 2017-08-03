@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('stylesheet')
-    <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}" media="all">
+    <link rel="stylesheet" href="{{ asset('css/hocvien_print.css') }}" media="print">
 @endsection
 
 @section('content')
 <div class="content" id="content">
-    <h1 class="page-header">Chi tiết: {{ $hocvien->HoLot }} {{ $hocvien->Ten }}</h1>
+    <h1 class="page-header">Học Viên: {{ $hocvien->HoLot }} {{ $hocvien->Ten }}</h1>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-inverse">
@@ -199,11 +200,11 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 button_control">
                             <a href="{{ route('hocvien_index') }}" class="btn btn-primary">Quay lại</a>
                             <a href="{{ url('/hocvien/edit', ['id' => $hocvien->HocVienID]) }}" class="btn btn-primary">Sửa</a>
                             <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" class="btn btn-primary">Xóa</a>
-<!--                                <a href="#" class="btn btn-primary">Xuất excel</a>-->
+                            <a href="javascript:void(0)" onclick="window.print();" class="btn btn-primary">In dữ liệu</a>
                         </div>
                     </form>
                 </div>
