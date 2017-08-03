@@ -1,8 +1,8 @@
-<style>
-    .pace-top .pace-progress,.pace-top .pace:before{top:0}
-    .pace-top .pace .pace-activity{top:11px}
-</style>
 @extends('layouts.app')
+
+@section('stylesheet')
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+@endsection
 
 @section('content')
 <div class="login bg-black animated fadeInDown">
@@ -49,9 +49,9 @@
                 <button type="submit" class="btn btn-success btn-block btn-lg">
                     Đăng nhập
                 </button>
-                <!--<a class="btn btn-link" href="{{ route('password.request') }}">
-                    Lấy lại mật khẩu?
-                </a>-->
+            </div>
+            <div class="m-t-20">
+                Chưa có tài khoản? Click vào <a href="{{ url('/register') }}" class="login_button">ĐÂY</a>
             </div>
         </form>
     </div>
