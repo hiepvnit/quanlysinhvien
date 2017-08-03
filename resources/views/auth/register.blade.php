@@ -7,7 +7,7 @@
 @section('content')
 <div class="animated fadeInDown">
     <div class="content" id="content">
-        <h1 class="page-header">Đăng ký học viên</h1>
+        <h1 class="page-header">Đăng ký học viên <small>Đăng ký giáo viên</small> </h1>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-inverse">
