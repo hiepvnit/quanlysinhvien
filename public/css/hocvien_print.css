@@ -9,4 +9,5 @@
     .button_control {display: none;}
     .btn-scroll-to-top {display: none !important;}
     .form-control, output {color: #000;}
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {background: #fff;}
 }
