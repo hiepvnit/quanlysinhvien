@@ -51,7 +51,7 @@
                 </button>
             </div>
             <div class="m-t-20">
-                Chưa có tài khoản? Click vào <a href="{{ url('/register') }}" class="login_button">ĐÂY</a>
+                <!-- Chưa có tài khoản? Click vào <a href="{{ url('/register') }}" class="login_button">ĐÂY</a>   -->
             </div>
         </form>
     </div>
