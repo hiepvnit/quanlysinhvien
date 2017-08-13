@@ -48,7 +48,7 @@ class TinhController extends Controller
             $tinh->TenTinh = $request->input('ten_tinh');
             $tinh->save();
 
-            return redirect()->route('tinh_index')->with('status', 'Tạo mới tỉnh thành công');
+            return redirect()->route('tinh.index')->with('status', 'Tạo mới tỉnh thành công');
         }
     }
     /*
@@ -56,15 +56,21 @@ class TinhController extends Controller
      */
     public function delete($id) {
         $tinhData = Tinh::find($id);
-        $tinhData->delete();
-        return redirect()->route('tinh_index')->with('status', 'Xóa tỉnh thành công');
+        if (!empty($tinhData)) {
+            $tinhData->delete();
+            return redirect()->route('tinh.index')->with('status', 'Xóa tỉnh thành công');
+        }
+        return abort(404);
     }
     /*
      * edit tinh
      */
     public function edit($id) {
         $tinhData = Tinh::find($id);
-        return view('tinh.edit')->with(compact('tinhData', $tinhData));
+        if (!empty($tinhData)) {
+            return view('tinh.edit')->with(compact('tinhData', $tinhData));
+        }
+        return abort(404);
     }
     /*
      * update tinh
@@ -87,7 +93,7 @@ class TinhController extends Controller
             $tinh->TenTinh = $request->input('ten_tinh');
             $tinh->save();
 
-            return redirect()->route('tinh_index')->with('status', 'Cập nhật tỉnh thành công');
+            return redirect()->route('tinh.index')->with('status', 'Cập nhật tỉnh thành công');
         }
     }
 }

@@ -56,7 +56,7 @@ class HuyenController extends Controller
             $huyen->TinhID = $request->input('ten_tinh');
             $huyen->save();
 
-            return redirect()->route('huyen_index')->with('status', 'Tạo mới huyện thành công');
+            return redirect()->route('huyen.index')->with('status', 'Tạo mới huyện thành công');
         }
     }
 
@@ -65,16 +65,22 @@ class HuyenController extends Controller
      */
     public function delete($id) {
         $huyenData = Huyen::find($id);
-        $huyenData->delete();
-        return redirect()->route('huyen_index')->with('status', 'Xóa huyện thành công');
+        if (!empty($huyenData)) {
+            $huyenData->delete();
+            return redirect()->route('huyen.index')->with('status', 'Xóa huyện thành công');
+        }
+        return abort(404);
     }
     /*
      * edit huyen
      */
     public function edit($id) {
         $huyenData = Huyen::find($id);
-        $tinhDatas = Tinh::all();
-        return view('huyen.edit')->with(compact(array('huyenData', 'tinhDatas')));
+        if (!empty($huyenData)) {
+            $tinhDatas = Tinh::all();
+            return view('huyen.edit')->with(compact(array('huyenData', 'tinhDatas')));
+        }
+        return abort(404);
     }
     /*
      * update huyen
@@ -100,7 +106,7 @@ class HuyenController extends Controller
             $huyen->TinhID = $request->input('ten_tinh');
             $huyen->save();
 
-            return redirect()->route('huyen_index')->with('status', 'Cập nhật huyện thành công');
+            return redirect()->route('huyen.index')->with('status', 'Cập nhật huyện thành công');
         }
     }
 }

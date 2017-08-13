@@ -21,11 +21,11 @@
         <form class="margin-bottom-0" role="form" method="POST" action="{{ route('login') }}">
             <!--                        {{ csrf_field() }}-->
 
-            <div class="form-group m-b-20{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input id="email" type="email" class="form-control input-lg" name="email" value="{{ old('email') }}" required placeholder="Địa chỉ email">
-                @if ($errors->has('email'))
+            <div class="form-group m-b-20{{ $errors->has('username') ? ' has-error' : '' }}">
+                <input id="username" type="text" class="form-control input-lg" name="username" value="{{ old('username') }}" placeholder="Tên đăng nhập">
+                @if ($errors->has('username'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('username') }}</strong>
                     </span>
                 @endif
             </div>
@@ -51,7 +51,7 @@
                 </button>
             </div>
             <div class="m-t-20">
-                <!-- Chưa có tài khoản? Click vào <a href="{{ url('/register') }}" class="login_button">ĐÂY</a>   -->
+                Chưa có tài khoản? Click vào <a href="{{ url('/register') }}" class="login_button">ĐÂY</a>
             </div>
         </form>
     </div>

@@ -12,7 +12,7 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
                     @include('errors.error')
-                    <form class="" role="form" method="POST" action="{{ route('hocvien_update') }}" enctype="multipart/form-data">
+                    <form class="" role="form" method="POST" action="{{ route('hocvien.update') }}" enctype="multipart/form-data">
                         <!--                {{ csrf_field() }}-->
                         <input type="hidden" name="id" value="{{$hocVien->HocVienID}}" />
                         <div class="form-group col-md-6">
@@ -222,7 +222,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     Sửa
                                 </button>
-                                <a href="{{ route('hocvien_index') }}">Quay lại</a>
+                                @role(['admin', 'teacher'])
+                                    <a href="{{ route('hocvien.index') }}">Quay lại</a>
+                                @endrole
+                                @role('student')
+                                    <a href="{{url('/hocvien/detail', ['id' => $hocVien->HocVienID])}}">Quay lại</a>
+                                @endrole
                             </div>
                         </div>
                     </form>

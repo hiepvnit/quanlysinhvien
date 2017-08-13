@@ -9,6 +9,8 @@ use App\Lop;
 use App\CongTy;
 use App\Huyen;
 use App\Tinh;
+use App\User;
+use Auth;
 use App\Http\Requests\HocVienRequest;
 
 class HocVienController extends Controller
@@ -95,7 +97,12 @@ class HocVienController extends Controller
     public function delete($id) {
         $hocVienData = Hocvien::find($id);
         $hocVienData->delete();
-        return redirect()->route('hocvien_index')->with('status', 'Xóa học viên thành công');
+
+        $userID = $hocVienData->userID;
+        if ($userID) {
+            User::find($userID)->delete();
+        }
+        return redirect()->route('hocvien.index')->with('status', 'Xóa học viên thành công');
     }
 
     /*
@@ -103,26 +110,32 @@ class HocVienController extends Controller
      * @params $id
      */
     public function detail($id) {
-        $hocvien = HocVien::with('congty', 'khoahoc', 'lop')->find($id);
+        $user = Auth::user();
+        if ($user->HocVienID == $id || $user->hasRole('admin') || $user->hasRole('teacher')) {
+            $hocvien = HocVien::with('congty', 'khoahoc', 'lop')->find($id);
+            if (!empty($hocvien)) {
+                $gioiTinh = array(
+                    '1' => 'Nam',
+                    '0' => 'Nữ'
+                );
+                $chiNhanh = array(
+                    '1' => 'Bắc Ninh',
+                    '0' => 'Hà Nội'
+                );
+                $huyChuongTrinh = array(
+                    '1' => 'Có',
+                    '0' => 'Không'
+                );
+                $xuatCanh = array(
+                    '1' => 'Có',
+                    '0' => 'Không'
+                );
 
-        $gioiTinh = array(
-            '1' => 'Nam',
-            '0' => 'Nữ'
-        );
-        $chiNhanh = array(
-            '1' => 'Bắc Ninh',
-            '0' => 'Hà Nội'
-        );
-        $huyChuongTrinh = array(
-            '1' => 'Có',
-            '0' => 'Không'
-        );
-        $xuatCanh = array(
-            '1' => 'Có',
-            '0' => 'Không'
-        );
-
-        return view('hocvien.detail', compact('hocvien', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh'));
+                return view('hocvien.detail', compact('hocvien', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh'));
+            }
+            return abort(404);
+        }
+        return abort(403);
     }
 
     /*
@@ -160,7 +173,7 @@ class HocVienController extends Controller
 
         $hocVien->save();
 
-        return redirect()->route('hocvien_index')->with('status', 'Tạo mới học viên thành công');
+        return redirect()->route('hocvien.index')->with('status', 'Tạo mới học viên thành công');
     }
 
     /*
@@ -169,14 +182,21 @@ class HocVienController extends Controller
      * @return: hocVien index
      */
     public function edit($id) {
-        $hocVien = HocVien::find($id);
-        $khoahocs = KhoaHoc::all();
-        $lops = Lop::all();
-        $congtys = CongTy::all();
-        $huyens = Huyen::all();
-        $tinhs = Tinh::all();
+        $user = Auth::user();
+        if ($user->HocVienID == $id) {
+            $hocVien = HocVien::find($id);
+            if (!empty($hocVien)) {
+                $khoahocs = KhoaHoc::all();
+                $lops = Lop::all();
+                $congtys = CongTy::all();
+                $huyens = Huyen::all();
+                $tinhs = Tinh::all();
 
-        return view('hocvien.edit')->with(compact(array('hocVien', 'khoahocs', 'lops', 'congtys', 'huyens', 'tinhs')));
+                return view('hocvien.edit')->with(compact(array('hocVien', 'khoahocs', 'lops', 'congtys', 'huyens', 'tinhs')));
+            }
+            return abort(404);
+        }
+        return abort(403);
     }
 
     /*
@@ -213,6 +233,12 @@ class HocVienController extends Controller
 
         $hocVien->save();
 
-        return redirect()->route('hocvien_index')->with('status', 'Sửa học viên thành công');
+        $user = Auth::user();
+        if ($user->hasRole('admin') || $user->hasRole('teacher')) {
+            return redirect()->route('hocvien.index')->with('status', 'Sửa học viên thành công');
+        }
+        else {
+            return redirect()->route('hocvien.detail', ['id' => $request->id])->with('status', 'Sửa học viên thành công');
+        }
     }
 }

@@ -12,7 +12,7 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
                     @include('errors.error')
-                    <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}" enctype="multipart/form-data">
+                    <form class="" role="form" method="POST" action="{{ route('hocvien.add') }}" enctype="multipart/form-data">
 <!--                                        {{ csrf_field() }}-->
 
                         <div class="form-group col-md-6">
@@ -230,7 +230,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Thêm
                                 </button>
-                                <a href="{{ route('hocvien_index') }}">Quay lại</a>
+                                <a href="{{ route('hocvien.index') }}">Quay lại</a>
                             </div>
                         </div>
                     </form>

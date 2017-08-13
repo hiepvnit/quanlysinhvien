@@ -48,7 +48,7 @@ class KhoaHocController extends Controller
             $khoahoc->GhiChu = $request->input('ghi_chu');
             $khoahoc->save();
 
-            return redirect()->route('khoahoc_index')->with('status', 'Tạo mới khóa học thành công');
+            return redirect()->route('khoahoc.index')->with('status', 'Tạo mới khóa học thành công');
         }
     }
     /*
@@ -56,15 +56,21 @@ class KhoaHocController extends Controller
      */
     public function delete($id) {
         $khoahocData = KhoaHoc::find($id);
-        $khoahocData->delete();
-        return redirect()->route('khoahoc_index')->with('status', 'Xóa khóa học thành công');
+        if (!empty($khoahocData)) {
+            $khoahocData->delete();
+            return redirect()->route('khoahoc.index')->with('status', 'Xóa khóa học thành công');
+        }
+        return abort(404);
     }
     /*
      * edit KhoaHoc
      */
     public function edit($id) {
         $khoahocData = KhoaHoc::find($id);
-        return view('khoahoc.edit')->with(compact(array('khoahocData')));
+        if (!empty($khoahocData)) {
+            return view('khoahoc.edit')->with(compact(array('khoahocData')));
+        }
+        return abort(404);
     }
     /*
      * update KhoaHoc
@@ -88,7 +94,7 @@ class KhoaHocController extends Controller
             $khoahoc->GhiChu = $request->input('ghi_chu');
             $khoahoc->save();
 
-            return redirect()->route('khoahoc_index')->with('status', 'Cập nhật khóa học thành công');
+            return redirect()->route('khoahoc.index')->with('status', 'Cập nhật khóa học thành công');
         }
     }
 }

@@ -48,7 +48,7 @@ class LopController extends Controller
             $lop->GhiChu = $request->input('ghi_chu');
             $lop->save();
 
-            return redirect()->route('lop_index')->with('status', 'Tạo mới lớp thành công');
+            return redirect()->route('lop.index')->with('status', 'Tạo mới lớp thành công');
         }
     }
     /*
@@ -56,15 +56,21 @@ class LopController extends Controller
      */
     public function delete($id) {
         $lopData = Lop::find($id);
-        $lopData->delete();
-        return redirect()->route('lop_index')->with('status', 'Xóa lớp thành công');
+        if (!empty($lopData)) {
+            $lopData->delete();
+            return redirect()->route('lop.index')->with('status', 'Xóa lớp thành công');
+        }
+        return abort(404);
     }
     /*
      * edit lop
      */
     public function edit($id) {
         $lopData = Lop::find($id);
-        return view('lop.edit')->with(compact(array('lopData')));
+        if (!empty($lopData)) {
+            return view('lop.edit')->with(compact(array('lopData')));
+        }
+        return abort(404);
     }
     /*
      * update lop
@@ -88,7 +94,7 @@ class LopController extends Controller
             $lop->GhiChu = $request->input('ghi_chu');
             $lop->save();
 
-            return redirect()->route('lop_index')->with('status', 'Cập nhật lớp thành công');
+            return redirect()->route('lop.index')->with('status', 'Cập nhật lớp thành công');
         }
     }
 }

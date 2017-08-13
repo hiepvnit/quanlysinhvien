@@ -3,7 +3,7 @@
 @section('content')
 <div class="content" id="content">
     <ol class="breadcrumb pull-right">
-        <li><a href="{{ route('khoahoc_add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm khóa học mới</a></li>
+        <li><a href="{{ route('khoahoc.add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm khóa học mới</a></li>
     </ol>
     <h1 class="page-header">Quản lý Khóa Học <small>thêm, xóa, sửa khóa học</small></h1>
     <div class="row">

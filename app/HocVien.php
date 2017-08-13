@@ -20,11 +20,17 @@ class HocVien extends Model
     protected $fillable = [
         'HoLot',
         'Ten',
-        'CongtyID',
+        'NgaySinh',
+        'GioiTinh',
+        'ThonXa',
+        'CongTyID',
         'KhoaHocID',
-        'Lop',
+        'LopID',
         'HuyenID',
-        'TinhID'
+        'TinhID',
+        'SDTNhaRieng',
+        'SDTDiDong',
+        'Active'
     ];
 
     public function congty()

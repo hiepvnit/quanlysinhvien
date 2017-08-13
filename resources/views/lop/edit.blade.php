@@ -8,7 +8,7 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('lop_update') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('lop.update') }}">
         <!--                {{ csrf_field() }}-->
                         <input type="hidden" name="id" value="{{ $lopData['LopID'] }}">
                         <div class="form-group">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('lop_index') }}">Quay lại</a>
+                    <a href="{{ route('lop.index') }}">Quay lại</a>
                 </div>
             </div>
         </div>

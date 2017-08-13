@@ -8,7 +8,7 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('khoahoc_update') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('khoahoc.update') }}">
         <!--                {{ csrf_field() }}-->
                         <input type="hidden" name="id" value="{{ $khoahocData['KhoaHocID'] }}">
                         <div class="form-group{{ $errors->has('ten_khoahoc') ? ' has-error' : '' }}">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('khoahoc_index') }}">Quay lại</a>
+                    <a href="{{ route('khoahoc.index') }}">Quay lại</a>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="content" id="content">
     <ol class="breadcrumb pull-right">
-        <li><a href="{{ route('congty_add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm công ty tiếp nhận mới</a></li>
+        <li><a href="{{ route('congty.add') }}" class="btn btn-primary m-r-5 m-b-5">Thêm công ty tiếp nhận mới</a></li>
     </ol>
     <h1 class="page-header">Quản lý Cty Tiếp Nhận <small>thêm, xóa, sửa cty tiếp nhận</small></h1>
     <div class="row">

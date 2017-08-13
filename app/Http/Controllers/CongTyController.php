@@ -48,7 +48,7 @@ class CongTyController extends Controller
             $congty->GhiChu = $request->input('ghi_chu');
             $congty->save();
 
-            return redirect()->route('congty_index')->with('status', 'Tạo mới công ty thành công');
+            return redirect()->route('congty.index')->with('status', 'Tạo mới công ty thành công');
         }
     }
     /*
@@ -56,15 +56,21 @@ class CongTyController extends Controller
      */
     public function delete($id) {
         $congtyData = CongTy::find($id);
-        $congtyData->delete();
-        return redirect()->route('congty_index')->with('status', 'Xóa công ty thành công');
+        if (!empty($congtyData)) {
+            $congtyData->delete();
+            return redirect()->route('congty.index')->with('status', 'Xóa công ty thành công');
+        }
+        return abort(404);
     }
     /*
      * edit CongTy
      */
     public function edit($id) {
         $congtyData = CongTy::find($id);
-        return view('congty.edit')->with(compact(array('congtyData')));
+        if (!empty($congtyData)) {
+            return view('congty.edit')->with(compact(array('congtyData')));
+        }
+        return abort(404);
     }
     /*
      * update CongTy
@@ -88,7 +94,7 @@ class CongTyController extends Controller
             $congty->GhiChu = $request->input('ghi_chu');
             $congty->save();
 
-            return redirect()->route('congty_index')->with('status', 'Cập nhật công ty thành công');
+            return redirect()->route('congty.index')->with('status', 'Cập nhật công ty thành công');
         }
     }
 }

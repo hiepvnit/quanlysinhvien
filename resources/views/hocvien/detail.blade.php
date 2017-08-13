@@ -13,7 +13,13 @@
             <div class="panel panel-inverse">
                 <div class="panel-body">
 
-                    <form class="" role="form" method="POST" action="{{ route('hocvien_add') }}">
+                    @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+
+                    <form class="" role="form" method="POST" action="{{ route('hocvien.add') }}">
                         <!--                {{ csrf_field() }}-->
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót</label>
@@ -201,10 +207,12 @@
                         </div>
 
                         <div class="form-group col-md-12 button_control">
-                            <a href="{{ route('hocvien_index') }}" class="btn btn-primary">Quay lại</a>
+                            <a href="{{ route('hocvien.index') }}" class="btn btn-primary">Quay lại</a>
                             <a href="{{ url('/hocvien/edit', ['id' => $hocvien->HocVienID]) }}" class="btn btn-primary">Sửa</a>
+                            @role(['admin','teacher'])
                             <a href="{{ url('/hocvien/delete', ['id' => $hocvien->HocVienID]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" class="btn btn-primary">Xóa</a>
                             <a href="javascript:void(0)" onclick="window.print();" class="btn btn-primary">In dữ liệu</a>
+                            @endrole
                         </div>
                     </form>
                 </div>
