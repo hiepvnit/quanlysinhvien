@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
     Route::group(['middleware' => ['role:admin']], function() {
-        Route::resource('user','UserController');
+        Route::resource('users','UserController');
     });
 
     Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['role:admin']]);
