@@ -39,12 +39,12 @@
                                     <td>{{ $user->email }}</td>
                                     <td>
                                         @if(!empty($user->roles))
-                                        @foreach($user->roles as $v)
-                                            <label class="label label-success">{{ $v->display_name }}</label>
-                                        @endforeach
+											@foreach($user->roles as $v)
+												<label class="label label-success">{{ $v->display_name }}</label>
+											@endforeach
                                         @endif
                                     </td>
-                                    <td> {{ ($user->public_flg == 1) ? 'Hoạt động' : 'Chờ duyệt' }} </td>
+                                    <td> {{ $user->public_flg }} </td>
                                     <td>
                                         <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Xem</a>
                                         <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Sửa</a>
