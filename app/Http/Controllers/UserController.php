@@ -136,9 +136,10 @@ class UserController extends Controller
         }
 
         $hocVien = HocVien::find($user->HocVienID);
-        $hocVien->Active = $request->active;
-        $hocVien->save();
-
+		if (!empty($hocVien)) {
+			$hocVien->Active = $request->active;
+			$hocVien->save();
+		}
         return redirect()->route('users.index')
             ->with('success','Cập nhật thành công');
     }
