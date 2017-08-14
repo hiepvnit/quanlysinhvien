@@ -90,25 +90,25 @@
                             <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->Ten }}</a></td>
                             <td><a href="{{url('/hocvien/detail', ['id' => $hocvien->HocVienID])}}">{{ $hocvien->HoLot . ' ' . $hocvien->Ten }}</a></td>
                             <td>{{ Carbon\Carbon::parse($hocvien->NgaySinh)->format('d/m/Y') }}</td>
-                            <td>{{ isset($hocvien->congty->TenCongTy) ? $hocvien->congty->TenCongTy : '' }}</td>
-                            <td>{{ isset($hocvien->khoahoc->TenKhoaHoc) ? $hocvien->khoahoc->TenKhoaHoc : '' }}</td>
-                            <td>{{ isset($hocvien->lop->TenLop) ? $hocvien->lop->TenLop : '' }}</td>
+                            <td>{{ isset($congty[$hocvien->CongTyID]) ? $congty[$hocvien->CongTyID] : '' }}</td>
+                            <td>{{ isset($khoahoc[$hocvien->KhoaHocID]) ? $khoahoc[$hocvien->KhoaHocID] : '' }}</td>
+                            <td>{{ isset($lop[$hocvien->LopID]) ? $lop[$hocvien->LopID] : '' }}</td>
                             <td>{{ $gioiTinh[$hocvien->GioiTinh] }}</td>
                             <td>{{ $hocvien->ThonXa }}</td>
-                            <td>{{ $chiNhanh[$hocvien->ChiNhanh] }}</td>
-                            <td>{{ isset($hocvien->huyen->TenHuyen) ? $hocvien->huyen->TenHuyen : '' }}</td>
-                            <td>{{ isset($hocvien->tinh->TenTinh) ? $hocvien->tinh->TenTinh : '' }}</td>
+                            <td>{{ isset($chiNhanh[$hocvien->ChiNhanh]) ? $chiNhanh[$hocvien->ChiNhanh] : '' }}</td>
+                            <td>{{ isset($huyen[$hocvien->HuyenID]) ? $huyen[$hocvien->HuyenID] : '' }}</td>
+                            <td>{{ isset($tinh[$hocvien->TinhID]) ? $tinh[$hocvien->TinhID] : '' }}</td>
                             <td>{{ $hocvien->SDTNhaRieng }}</td>
                             <td>{{ $hocvien->SDTDiDong }}</td>
                             <td>{{ $hocvien->CMND }}</td>
                             <td>{{ Carbon\Carbon::parse($hocvien->NgayCapCMND)->format('d/m/Y') }}</td>
-                            <td>@if(isset($hocvien->tinh->TinhID) && $hocvien->tinh->TinhID == $hocvien->NoiCapCMND) {{ $hocvien->tinh->TenTinh }} @endif</td>
+                            <td>{{ isset($tinh[$hocvien->NoiCapCMND]) ? $tinh[$hocvien->NoiCapCMND] : '' }}</td>
                             <td>{{ Carbon\Carbon::parse($hocvien->NgayNhapHoc)->format('d/m/Y')}}</td>
                             <td>{{ Carbon\Carbon::parse($hocvien->NgayKetThuc)->format('d/m/Y')}}</td>
                             <td>{{ $hocvien->GhiChu}}</td>
-                            <td>{{ Carbon\Carbon::parse($hocvien->NgayXuatCanh)->format('d/m/Y')}}</td>
-                            <td>{{ $huyChuongTrinh[$hocvien->BoChuongTrinh]}}</td>
-                            <td>{{ $xuatCanh[$hocvien->XuatCanh]}}</td>
+                            <td>{{Carbon\Carbon::parse($hocvien->NgayXuatCanh)->format('d/m/Y')}}</td>
+                            <td>{{ isset($huyChuongTrinh[$hocvien->BoChuongTrinh]) ? $huyChuongTrinh[$hocvien->BoChuongTrinh] : ''}}</td>
+                            <td>{{ isset($xuatCanh[$hocvien->XuatCanh]) ? $xuatCanh[$hocvien->XuatCanh] : ''}}</td>
                             <td>{{ $hocvien->DongTienLan1}}</td>
                             <td>{{ $hocvien->DongTienLan2}}</td>
                             <td>{{ $hocvien->DongTienLan3}}</td>

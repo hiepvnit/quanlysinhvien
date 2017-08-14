@@ -73,62 +73,6 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-group col-md-6{{ $errors->has('khoa_hoc') ? ' has-error' : '' }}">
-                                <label for="khoa_hoc">Khóa học <span class="text-danger">(*)</span></label>
-                                <select class="form-control" name="khoa_hoc" id="khoa_hoc">
-                                    <option value="">[Chọn khóa học]</option>
-                                    @foreach ($khoahocs as $khoahoc)
-                                        @if (old('khoa_hoc') == $khoahoc->KhoaHocID)
-                                            <option value="{{$khoahoc->KhoaHocID}}" selected>{{$khoahoc->TenKhoaHoc}}</option>
-                                        @else
-                                            <option value="{{$khoahoc->KhoaHocID}}">{{$khoahoc->TenKhoaHoc}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('khoa_hoc'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('khoa_hoc') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="form-group col-md-6{{ $errors->has('lop') ? ' has-error' : '' }}">
-                                <label for="lop">Lớp <span class="text-danger">(*)</span></label>
-                                <select class="form-control" name="lop" id="lop">
-                                    <option value="">[Chọn lớp]</option>
-                                    @foreach ($lops as $lop)
-                                        @if (old('lop') == $lop->LopID)
-                                            <option value="{{$lop->LopID}}" selected>{{$lop->TenLop}}</option>
-                                        @else
-                                            <option value="{{$lop->LopID}}">{{$lop->TenLop}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('lop'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lop') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="form-group col-md-6{{ $errors->has('congty') ? ' has-error' : '' }}">
-                                <label for="congty">Công ty tiếp nhận <span class="text-danger">(*)</span></label>
-                                <select class="form-control" name="congty" id="congty">
-                                    <option value="">[Chọn công ty tiếp nhận]</option>
-                                    @foreach ($congtys as $congty)
-                                        @if (old('congty') == $congty->CongTyID)
-                                            <option value="{{$congty->CongTyID}}" selected>{{$congty->TenCongTy}}</option>
-                                        @else
-                                            <option value="{{$congty->CongTyID}}">{{$congty->TenCongTy}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('congty'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('congty') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
                             <div class="form-group col-md-6{{ $errors->has('thon_xa') ? ' has-error' : '' }}">
                                 <label for="thon_xa">Thôn xã <span class="text-danger">(*)</span></label>
                                 <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" value="{{old('thon_xa')}}">

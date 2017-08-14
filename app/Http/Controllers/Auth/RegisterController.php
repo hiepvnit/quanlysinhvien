@@ -70,9 +70,6 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'gioi_tinh' => 'required',
             'ngay_sinh' => 'required',
-            'khoa_hoc' => 'required',
-            'congty' => 'required',
-            'lop' => 'required',
             'huyen' => 'required',
             'tinh' => 'required',
             'thon_xa' => 'required',
@@ -90,7 +87,7 @@ class RegisterController extends Controller
         $input['HocVienID'] = $hocVienData->HocVienID;
         $this->create($input);
 
-        return redirect('/login');
+        return redirect('/login')->with('status', 'Đăng ký thành công. Đang chờ xét duyệt.');
     }
 
     /**
@@ -123,9 +120,6 @@ class RegisterController extends Controller
             'Ten' => $data['name'],
             'NgaySinh' => $data['ngay_sinh'],
             'GioiTinh' => $data['gioi_tinh'],
-            'KhoaHocID' => $data['khoa_hoc'],
-            'LopID' => $data['lop'],
-            'CongTyID' => $data['congty'],
             'ThonXa' => $data['thon_xa'],
             'HuyenID' => $data['huyen'],
             'TinhID' => $data['tinh'],

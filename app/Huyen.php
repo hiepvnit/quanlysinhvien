@@ -9,8 +9,8 @@ class Huyen extends Model
     protected $table = 'Huyen';
     protected $primaryKey = 'HuyenID';
 
-    public function hocvien()
-    {
-        return $this->hasMany('App\HocVien', 'HuyenID', 'HuyenID');
-    }
+    protected $fillable = [
+        'HuyenID',
+        'TenHuyen'
+    ];
 }

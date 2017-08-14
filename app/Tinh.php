@@ -10,8 +10,4 @@ class Tinh extends Model
     protected $primaryKey = 'TinhID';
     protected $fillable = array('TenTinh');
 
-    public function hocvien()
-    {
-        return $this->hasMany('App\HocVien', 'TinhID', 'TinhID');
-    }
 }

@@ -30,7 +30,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Tên nhóm:</strong>
-                                    {!! Form::text('name', null, array('placeholder' => 'Tên nhóm','class' => 'form-control')) !!}
+                                    {!! Form::text('name_role', null, array('placeholder' => 'Tên nhóm','class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">

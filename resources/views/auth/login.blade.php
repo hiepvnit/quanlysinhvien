@@ -17,6 +17,12 @@
         </div>
     </div>
 
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
+
     <div class="login-content">
         <form class="margin-bottom-0" role="form" method="POST" action="{{ route('login') }}">
             <!--                        {{ csrf_field() }}-->

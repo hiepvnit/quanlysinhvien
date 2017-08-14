@@ -56,9 +56,7 @@ class HocVienController extends Controller
      * home function. show list hocvien
      */
     public function index(Request $request) {
-        $hocviens = HocVien::with('congty', 'khoahoc', 'lop')
-            ->where('Active', '=', '1')
-            ->get();
+        $hocviens = HocVien::where('Active', '=', '1')->get();
         $gioiTinh = array(
             '1' => 'Nam',
             '0' => 'Nữ'
@@ -75,7 +73,14 @@ class HocVienController extends Controller
             '1' => 'Có',
             '0' => 'Không'
         );
-        return view('hocvien.index', compact(array('hocviens', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh')));
+        $khoahoc = KhoaHoc::pluck('TenKhoaHoc', 'KhoaHocID')->all();
+        $lop = Lop::pluck('TenLop', 'LopID')->all();
+        $congty = CongTy::pluck('TenCongTy', 'CongTyID')->all();
+        $huyen = Huyen::pluck('TenHuyen', 'HuyenID')->all();
+        $tinh = Tinh::pluck('TenTinh', 'TinhID')->all();
+
+        return view('hocvien.index', compact(array('hocviens', 'gioiTinh', 'chiNhanh',
+            'huyChuongTrinh', 'xuatCanh', 'khoahoc', 'lop', 'congty', 'huyen', 'tinh')));
     }
 
     /*
@@ -112,7 +117,7 @@ class HocVienController extends Controller
     public function detail($id) {
         $user = Auth::user();
         if ($user->HocVienID == $id || $user->hasRole('admin') || $user->hasRole('teacher')) {
-            $hocvien = HocVien::with('congty', 'khoahoc', 'lop')->find($id);
+            $hocvien = HocVien::where('Active', '=', '1')->find($id);
             if (!empty($hocvien)) {
                 $gioiTinh = array(
                     '1' => 'Nam',
@@ -131,7 +136,14 @@ class HocVienController extends Controller
                     '0' => 'Không'
                 );
 
-                return view('hocvien.detail', compact('hocvien', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh', 'xuatCanh'));
+                $khoahoc = KhoaHoc::pluck('TenKhoaHoc', 'KhoaHocID')->all();
+                $lop = Lop::pluck('TenLop', 'LopID')->all();
+                $congty = CongTy::pluck('TenCongTy', 'CongTyID')->all();
+                $huyen = Huyen::pluck('TenHuyen', 'HuyenID')->all();
+                $tinh = Tinh::pluck('TenTinh', 'TinhID')->all();
+
+                return view('hocvien.detail', compact('hocvien', 'gioiTinh', 'chiNhanh', 'huyChuongTrinh',
+                    'xuatCanh', 'khoahoc', 'lop', 'congty', 'huyen', 'tinh'));
             }
             return abort(404);
         }
@@ -183,7 +195,7 @@ class HocVienController extends Controller
      */
     public function edit($id) {
         $user = Auth::user();
-        if ($user->HocVienID == $id) {
+        if ($user->HocVienID == $id || $user->hasRole('admin') || $user->hasRole('teacher')) {
             $hocVien = HocVien::find($id);
             if (!empty($hocVien)) {
                 $khoahocs = KhoaHoc::all();

@@ -9,8 +9,9 @@ class Lop extends Model
     protected $table = 'Lop';
     protected $primaryKey = 'LopID';
 
-    public function hocvien()
-    {
-        return $this->hasMany('App\HocVien', 'LopID', 'LopID');
-    }
+    protected $fillable = [
+        'LopID',
+        'TenLop'
+    ];
+
 }

@@ -56,21 +56,21 @@
                         <div class="form-group col-md-6">
                             <label for="khoa_hoc">Khóa học</label>
                             <select class="form-control" name="khoa_hoc" id="khoa_hoc" disabled>
-                                <option>{{ isset($hocvien->khoahoc->TenKhoaHoc) ? $hocvien->khoahoc->TenKhoaHoc : '' }}</option>
+                                <option>{{ isset($khoahoc[$hocvien->KhoaHocID]) ? $khoahoc[$hocvien->KhoaHocID] : '' }}</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="lop">Lớp</label>
                             <select class="form-control" name="lop" id="lop" disabled>
-                                <option value="">{{ isset($hocvien->lop->TenLop) ? $hocvien->lop->TenLop : '' }}</option>
+                                <option value="">{{ isset($lop[$hocvien->LopID]) ? $lop[$hocvien->LopID] : '' }}</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="congty">Công ty tiếp nhận</label>
                             <select class="form-control" name="congty" id="congty" disabled>
-                                <option value="">{{ isset($hocvien->congty->TenCongTy) ? $hocvien->congty->TenCongTy : '' }}</option>
+                                <option value="">{{ isset($congty[$hocvien->CongTyID]) ? $congty[$hocvien->CongTyID] : '' }}</option>
                             </select>
                         </div>
 
@@ -82,14 +82,14 @@
                         <div class="form-group col-md-6">
                             <label for="huyen">Huyện</label>
                             <select class="form-control" name="huyen" id="huyen" disabled>
-                                <option value="">{{ isset($hocvien->huyen->TenHuyen) ? $hocvien->huyen->TenHuyen : '' }}</option>
+                                <option value="">{{ isset($huyen[$hocvien->HuyenID]) ? $huyen[$hocvien->HuyenID] : '' }}</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="tinh">Tỉnh</label>
                             <select class="form-control" name="tinh" id="tinh" disabled>
-                                <option value="">{{ isset($hocvien->tinh->TenTinh) ? $hocvien->tinh->TenTinh : '' }}</option>
+                                <option value="">{{ isset($tinh[$hocvien->TinhID]) ? $tinh[$hocvien->TinhID] : '' }}</option>
                             </select>
                         </div>
 
@@ -121,7 +121,7 @@
                         <div class="form-group col-md-6">
                             <label for="tinh">Nơi cấp CMND</label>
                             <select class="form-control" name="noi_cap_cmnd" id="noi_cap_cmnd" disabled>
-                                <option value="">@if(isset($hocvien->tinh->TinhID) && $hocvien->tinh->TinhID == $hocvien->NoiCapCMND) {{ $hocvien->tinh->TenTinh }} @endif</option>
+                                <option value="">{{ isset($tinh[$hocvien->NoiCapCMND]) ? $tinh[$hocvien->NoiCapCMND] : '' }}</option>
                             </select>
                         </div>
 
