@@ -201,10 +201,10 @@ class HocVienController extends Controller
                 $khoahocs = KhoaHoc::all();
                 $lops = Lop::all();
                 $congtys = CongTy::all();
-                $huyens = Huyen::all();
+                $huyen = Huyen::pluck('TenHuyen', 'HuyenID')->all();
                 $tinhs = Tinh::all();
 
-                return view('hocvien.edit')->with(compact(array('hocVien', 'khoahocs', 'lops', 'congtys', 'huyens', 'tinhs')));
+                return view('hocvien.edit')->with(compact(array('hocVien', 'khoahocs', 'lops', 'congtys', 'huyen', 'tinhs')));
             }
             return abort(404);
         }

@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}">
 @endsection
 
+@section('scripts')
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ asset('js/common.js') }}"></script>
+    <script>var baseUrl = "<?php echo route('hocvien.ajax'); ?>";</script>
+@endsection
+
 @section('content')
 <div class="content" id="content">
     <h1 class="page-header">Sửa học viên</h1>
@@ -76,21 +82,6 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="thon_xa">Thôn xã</label>
-                            <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" value="{{$hocVien->ThonXa}}">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="huyen">Huyện <span class="text-danger">(*)</span></label>
-                            <select class="form-control" name="huyen" id="huyen">
-                                <option value="">[Chọn huyện]</option>
-                                @foreach ($huyens as $huyen)
-                                <option value="{{$huyen->HuyenID}}" @if($huyen->HuyenID == $hocVien->HuyenID) selected @endif>{{$huyen->TenHuyen}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-6">
                             <label for="tinh">Tỉnh <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="tinh" id="tinh">
                                 <option value="">[Chọn tỉnh]</option>
@@ -98,6 +89,21 @@
                                 <option value="{{$tinh->TinhID}}" @if($tinh->TinhID == $hocVien->TinhID) selected @endif>{{$tinh->TenTinh}}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="huyen">Huyện <span class="text-danger">(*)</span></label>
+                            <select class="form-control" name="huyen" id="huyen">
+                                <option value="">[Chọn huyện]</option>
+                                @if(isset($hocVien->HuyenID))
+                                <option value="{{ $hocVien->TinhID }}" selected>{{ $huyen[$hocVien->HuyenID] }}</option>
+                                @endif
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="thon_xa">Thôn xã</label>
+                            <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" value="{{$hocVien->ThonXa}}">
                         </div>
 
                         <div class="form-group col-md-6">

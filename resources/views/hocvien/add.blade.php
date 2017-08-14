@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/hocvien.css') }}">
 @endsection
 
+@section('scripts')
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ asset('js/common.js') }}"></script>
+    <script>var baseUrl = "<?php echo route('hocvien.ajax'); ?>";</script>
+@endsection
+
 @section('content')
 <div class="content" id="content">
     <h1 class="page-header">Thêm học viên</h1>
@@ -13,7 +19,7 @@
                 <div class="panel-body">
                     @include('errors.error')
                     <form class="" role="form" method="POST" action="{{ route('hocvien.add') }}" enctype="multipart/form-data">
-<!--                                        {{ csrf_field() }}-->
+                        {{ csrf_field() }}
 
                         <div class="form-group col-md-6">
                             <label for="ho_lot">Họ lót <span class="text-danger">(*)</span></label>
@@ -83,25 +89,6 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
-                            <label for="thon_xa">Thôn xã</label>
-                            <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" value="{{old('thon_xa')}}">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="huyen">Huyện <span class="text-danger">(*)</span></label>
-                            <select class="form-control" name="huyen" id="huyen">
-                                <option value="">[Chọn huyện]</option>
-                                @foreach ($huyens as $huyen)
-                                    @if(old('huyen') == $huyen->HuyenID)
-                                    <option value="{{$huyen->HuyenID}}" selected>{{$huyen->TenHuyen}}</option>
-                                    @else
-                                    <option value="{{$huyen->HuyenID}}">{{$huyen->TenHuyen}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
-
                         <div class="form-group col-md-6">
                             <label for="tinh">Tỉnh <span class="text-danger">(*)</span></label>
                             <select class="form-control" name="tinh" id="tinh">
@@ -114,6 +101,18 @@
                                     @endif
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="huyen">Huyện <span class="text-danger">(*)</span></label>
+                            <select class="form-control" name="huyen" id="huyen">
+                                <option value="">[Chọn huyện]</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="thon_xa">Thôn xã</label>
+                            <input type="text" class="form-control" name="thon_xa" id="" placeholder="Thôn xã" value="{{old('thon_xa')}}">
                         </div>
 
                         <div class="form-group col-md-6">

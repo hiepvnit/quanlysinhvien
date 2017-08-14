@@ -76,3 +76,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('hocvien/edit/{id}', 'HocVienController@edit');
     Route::post('hocvien/update',['as'=>'hocvien.update','uses'=>'HocVienController@update']);
 });
+
+Route::post('getHuyenData', ['as'=>'hocvien.ajax','uses'=>'AjaxController@getHuyenData']); // Ajax request
